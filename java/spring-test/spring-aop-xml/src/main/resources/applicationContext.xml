@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="org.example.spring.common.service.impl.UserServiceImpl">
+    </bean>
+    <bean id="log" class="org.example.spring.common.aop.LogMethodBeforeAdvice">
+    </bean>
+
+
+    <aop:config>
+        <!-- 切入点 -->
+        <aop:pointcut id="userServiceBeforeLog"
+                      expression="execution(* org.example.spring.common.service.impl.UserServiceImpl.*(..))"/>
+        <!-- 环绕增加 -->
+        <aop:advisor advice-ref="log" pointcut-ref="userServiceBeforeLog"></aop:advisor>
+    </aop:config>
+
+
+</beans>
