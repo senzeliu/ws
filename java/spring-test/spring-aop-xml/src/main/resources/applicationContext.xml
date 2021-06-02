@@ -11,8 +11,10 @@
     </bean>
     <bean id="log" class="org.example.spring.common.aop.LogMethodBeforeAdvice">
     </bean>
+    <bean id="logAdvice" class="org.example.spring.common.aop.LogAdvice">
+    </bean>
 
-
+    <!-- 方法1 -->
     <aop:config>
         <!-- 切入点 -->
         <aop:pointcut id="userServiceBeforeLog"
@@ -21,5 +23,14 @@
         <aop:advisor advice-ref="log" pointcut-ref="userServiceBeforeLog"></aop:advisor>
     </aop:config>
 
+
+    <!-- 方法2 这种方法不能获取入参 不够灵活 -->
+    <aop:config>
+        <aop:aspect ref="logAdvice">
+            <aop:pointcut id="userServiceBeforeLog"
+                          expression="execution(* org.example.spring.common.service.impl.UserServiceImpl.*(..))"/>
+            <aop:before method="before" pointcut-ref="userServiceBeforeLog"></aop:before>
+        </aop:aspect>
+    </aop:config>
 
 </beans>
