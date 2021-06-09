@@ -12,6 +12,7 @@
         <module>spring-aop-xml</module>
         <module>spring-aop-annotation</module>
         <module>spring-common</module>
+        <module>spring-mybatis </module>
     </modules>
 
     <properties>
@@ -43,6 +44,37 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.9.4</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.20</version><!--
+                <scope>provided</scope>-->
+            </dependency>
+
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
