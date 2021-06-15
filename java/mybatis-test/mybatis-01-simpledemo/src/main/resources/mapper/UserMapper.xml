@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mybatis.mapper.UserMapper">
+
+
+    <sql id="tableName">
+        test_user
+    </sql>
+
+    <select id="selectAll" resultType="org.example.mybatis.pojo.User">
+    select * from test_user
+    </select>
+
+    <select id="selectById" parameterType="int" resultType="org.example.mybatis.pojo.User">
+     select * from <include refid="tableName"/> where id=#{id}
+    </select>
+
+    <insert id="insert" parameterType="org.example.mybatis.pojo.User">
+        insert into <include refid="tableName"/> values (#{id},#{username})
+    </insert>
+
+    <update id="update" parameterType="org.example.mybatis.pojo.User">
+        update <include refid="tableName"/> set username=#{username} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from <include refid="tableName"/> where id=#{id}
+    </delete>
+</mapper>

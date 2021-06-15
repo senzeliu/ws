@@ -26,7 +26,7 @@
         <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
 
-    <bean id="userMapper" class="org.example.spring.mybatis.mapper.UserMapperImpl">
+    <bean id="userMapper" class="UserMapperImpl">
         <property name="sqlSession" ref="sqlSession"/>
     </bean>
 
