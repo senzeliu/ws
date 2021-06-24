@@ -32,7 +32,7 @@ public class Application {
 
 
         /*userMapper.insert();*/
-
+        userMapper.selectById(1);
 
     }
 }

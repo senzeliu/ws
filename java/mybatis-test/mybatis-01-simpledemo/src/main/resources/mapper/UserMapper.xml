@@ -4,28 +4,119 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.mybatis.mapper.UserMapper">
 
+    <resultMap id="userMap1" type="org.example.mybatis.pojo.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <association property="boss" javaType="org.example.mybatis.pojo.Boss" column="boss_id" select="getBoss"/>
+    </resultMap>
+
+    <resultMap id="userMap2" type="org.example.mybatis.pojo.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <!-- 多对一 -->
+        <association property="boss" javaType="org.example.mybatis.pojo.Boss">
+            <result property="id" column="boss_id"/>
+            <result property="name" column="boss_name"/>
+        </association>
+        <!-- 一对多 -->
+        <collection property="addressList" ofType="org.example.mybatis.pojo.Address">
+            <result property="id" column="address_id"/>
+            <result property="address" column="address"/>
+        </collection>
+    </resultMap>
+
 
     <sql id="tableName">
         test_user
     </sql>
 
     <select id="selectAll" resultType="org.example.mybatis.pojo.User">
-    select * from test_user
+        select *
+        from <include refid="tableName"/>
     </select>
 
     <select id="selectById" parameterType="int" resultType="org.example.mybatis.pojo.User">
-     select * from <include refid="tableName"/> where id=#{id}
+        select * from
+        <include refid="tableName"/>
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+        </where>
     </select>
 
     <insert id="insert" parameterType="org.example.mybatis.pojo.User">
-        insert into <include refid="tableName"/> values (#{id},#{username})
+        insert into
+        <include refid="tableName"/>
+        values (#{id},#{username})
     </insert>
 
     <update id="update" parameterType="org.example.mybatis.pojo.User">
-        update <include refid="tableName"/> set username=#{username} where id=#{id}
+        update
+        <include refid="tableName"/>
+        <set>
+            <if test="username != null">
+                username=#{username},
+            </if>
+        </set>
+        where id=#{id}
     </update>
 
     <delete id="delete" parameterType="int">
-        delete from <include refid="tableName"/> where id=#{id}
+        delete from
+        <include refid="tableName"/>
+        where id=#{id}
     </delete>
+
+
+    <select id="selectAllWithBoss" resultMap="userMap1">
+        select *
+        from test_user
+    </select>
+
+    <select id="getBoss" resultType="org.example.mybatis.pojo.Boss">
+        select *
+        from boss
+        where id = #{id}
+    </select>
+
+    <!-- 多对一 -->
+    <select id="selectAllWithBoss2" resultMap="userMap2">
+        select u.id, u.username, u.boss_id, b.name boss_name
+        from test_user u
+                 left join boss b on u.boss_id = b.id
+    </select>
+
+
+    <select id="selectAllWithBossAddress" resultMap="userMap2">
+        select u.id, u.username, u.boss_id, b.name boss_name, a.id address_id, a.address address
+        from test_user u
+                 left join boss b on u.boss_id = b.id
+                 left join address a on a.user_id = u.id
+    </select>
+
+
+    <select id="testWhere" resultMap="userMap2">
+        select *
+        from boss
+        <where>
+            <if test="id!=null">
+
+            </if>
+            <if test="id!=null">
+
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="insertBatch" parameterType="org.example.mybatis.pojo.User">
+        insert into
+        <include refid="tableName"/>
+        values
+            <foreach collection="list" item="item" index="index" open="(" close=")">
+                #{item.id},#{item.username}
+            </foreach>
+    </insert>
+
 </mapper>

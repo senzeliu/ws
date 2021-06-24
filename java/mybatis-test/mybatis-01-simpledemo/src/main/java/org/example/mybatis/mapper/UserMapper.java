@@ -20,4 +20,10 @@ public interface UserMapper {
     void update(User user);
 
     void delete(int id);
+
+    List<User> selectAllWithBoss1();
+
+    List<User> selectAllWithBoss2();
+
+    List<User> selectAllWithBossAddress();
 }
