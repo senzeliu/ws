@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mybatis.mapper.BossMapper">
+
+  <!--  <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>-->
+
+    <resultMap id="userMap" type="org.example.mybatis.pojo.Boss">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+
+    <sql id="tableName">
+        boss
+    </sql>
+
+    <insert id="insert" parameterType="org.example.mybatis.pojo.Boss">
+        insert into
+        <include refid="tableName"/> (id,name)
+        values (#{id},#{name})
+    </insert>
+
+</mapper>

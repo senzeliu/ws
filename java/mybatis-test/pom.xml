@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mybatis-01-simpledemo</module>
+        <module>mybatis-02-transaction</module>
     </modules>
 
     <properties>
