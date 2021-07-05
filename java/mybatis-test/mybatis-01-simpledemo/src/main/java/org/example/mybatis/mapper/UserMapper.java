@@ -1,8 +1,10 @@
 package org.example.mybatis.mapper;
 
+import org.apache.ibatis.annotations.Select;
 import org.example.mybatis.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author liusenze
@@ -20,6 +22,16 @@ public interface UserMapper {
     void update(User user);
 
     void delete(int id);
+
+    //map入参
+    void insertMap(Map user);
+
+    List<User> selectLike(String username);
+
+
+    //注解
+    @Select("select * from test_user")
+    List<User> selectByAnnotatione(String username);
 
     List<User> selectAllWithBoss1();
 

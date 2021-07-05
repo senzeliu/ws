@@ -30,7 +30,12 @@
         test_user
     </sql>
 
+    <sql id="insert_column">
+        username
+    </sql>
+
     <select id="selectAll" resultType="org.example.mybatis.pojo.User">
+    select * from <include refid="tableName"/>
         select *
         from <include refid="tableName"/>
     </select>
@@ -45,10 +50,8 @@
         </where>
     </select>
 
-    <insert id="insert" parameterType="org.example.mybatis.pojo.User">
-        insert into
-        <include refid="tableName"/>
-        values (#{id},#{username})
+    <insert id="insert" parameterType="org.example.mybatis.pojo.User" useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="tableName"/> (<include refid="insert_column"/>) values (#{username})
     </insert>
 
     <update id="update" parameterType="org.example.mybatis.pojo.User">
@@ -67,6 +70,17 @@
         <include refid="tableName"/>
         where id=#{id}
     </delete>
+
+    <insert id="insertMap" parameterType="map" useGeneratedKeys="true" keyProperty="id"  >
+        insert into <include refid="tableName"/> (<include refid="insert_column"/>) values (#{username})
+    </insert>
+
+    <!-- "%"#{username}"%" 必须用#{} 防止sql注入 注意写法 %必须是双引号
+         或者 concat('%',#{username},'%')
+    -->
+    <select id="selectLike" parameterType="string" resultType="org.example.mybatis.pojo.User">
+    select * from <include refid="tableName"/> where username like "%"#{username}"%"
+    </select>
 
 
     <select id="selectAllWithBoss" resultMap="userMap1">
