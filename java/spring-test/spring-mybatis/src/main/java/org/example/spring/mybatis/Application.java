@@ -33,7 +33,6 @@ public class Application {
         userMapper.selectAll().forEach(item-> System.out.println(item));*/
 
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         userMapper.selectAll().forEach(item-> System.out.println(item));
     }

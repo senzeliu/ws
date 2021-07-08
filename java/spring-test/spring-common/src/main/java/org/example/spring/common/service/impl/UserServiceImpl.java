@@ -8,7 +8,9 @@ import org.example.spring.common.service.UserService;
  * @since 2021/6/2 10:26 下午
  */
 public class UserServiceImpl implements UserService {
+
+    private String ss;
     public void test() {
-        System.out.println("this is userservice");
+        System.out.println("this is userservice "+ss);
     }
 }
