@@ -16,10 +16,10 @@ import java.io.InputStream;
  */
 public class Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         //读取数据库配置信息和mapper信息，创建SqlSessionFactory
-        String resource = "mybatis-config.xml";
+        /*String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory =
                 new SqlSessionFactoryBuilder().build(inputStream);
@@ -31,8 +31,11 @@ public class Application {
         userMapper.selectAll().forEach(item-> System.out.println(item));
 
 
-        /*userMapper.insert();*/
-        userMapper.selectById(1);
+        *//*userMapper.insert();*//*
+        userMapper.selectById(1);*/
 
+
+        Class.forName("org.example.mybatis.pojo.Address");
+        Class.forName("org.example.mybatis.pojo.Address");
     }
 }

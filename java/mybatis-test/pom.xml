@@ -11,12 +11,14 @@
     <modules>
         <module>mybatis-01-simpledemo</module>
         <module>mybatis-02-transaction</module>
+        <module>mybatis-03-druid</module>
     </modules>
 
     <properties>
         <spring.version>5.2.10.RELEASE</spring.version>
         <this.version>1.0-SNAPSHOT</this.version>
         <java.version>1.8</java.version>
+        <druid.version>1.2.6</druid.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -56,7 +58,11 @@
                 <artifactId>mybatis-spring</artifactId>
                 <version>2.0.2</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

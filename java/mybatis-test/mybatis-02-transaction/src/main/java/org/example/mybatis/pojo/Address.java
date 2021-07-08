@@ -9,6 +9,11 @@ import lombok.Data;
  */
 @Data
 public class Address {
+
+    static {
+        System.out.println("ssss");
+    }
+
     private int id;
     private String address;
 }

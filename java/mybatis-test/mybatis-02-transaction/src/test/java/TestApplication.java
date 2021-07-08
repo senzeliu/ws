@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.mybatis.mapper.BossMapper;
 import org.example.mybatis.mapper.UserMapper;
+//import org.example.mybatis.pojo.Address;
 import org.example.mybatis.pojo.Boss;
 import org.example.mybatis.pojo.User;
 import org.junit.Test;
@@ -99,5 +100,16 @@ public class TestApplication {
         session.close();
 
 
+    }
+
+
+    @Test
+    public void testclassforName() {
+        try {
+            Class.forName("org.example.mybatis.pojo.Address");
+            Class.forName("org.example.mybatis.pojo.Address");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
