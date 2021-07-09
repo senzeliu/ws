@@ -32,7 +32,9 @@ public class Application {
         UserMapper userMapper= session.getMapper(UserMapper.class);
         userMapper.selectAll().forEach(item-> System.out.println(item));*/
 
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+       // ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext-MapperScannerConfigurer.xml");
+
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         userMapper.selectAll().forEach(item-> System.out.println(item));
     }

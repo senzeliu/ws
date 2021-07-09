@@ -8,6 +8,7 @@
         https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="userService" class="org.example.spring.common.service.impl.UserServiceImpl">
+        <property name="xx" value="asd"/>
     </bean>
     <bean id="log" class="org.example.spring.common.aop.LogMethodBeforeAdvice">
     </bean>

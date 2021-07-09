@@ -13,4 +13,8 @@ public class UserServiceImpl implements UserService {
     public void test() {
         System.out.println("this is userservice "+ss);
     }
+
+    public void setXx(String sss) {
+        System.out.println("this is xx "+sss);
+    }
 }

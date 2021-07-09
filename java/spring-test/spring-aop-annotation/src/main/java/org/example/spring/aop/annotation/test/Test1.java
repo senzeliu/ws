@@ -13,6 +13,8 @@ public class Test1 implements Tes{
 
     @Value("sss")
     private String ss;
+
+
     public void test() {
         System.out.println("this is userservice 1 "+ss);
     }

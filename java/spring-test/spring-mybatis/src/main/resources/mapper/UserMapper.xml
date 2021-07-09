@@ -6,4 +6,8 @@
     <select id="selectAll" resultType="org.example.spring.mybatis.pojo.User">
     select * from test_user
     </select>
+
+    <insert id="insert" parameterType="org.example.spring.mybatis.pojo.User" useGeneratedKeys="true" keyProperty="id" >
+        insert into test_user (username) values (#{username})
+    </insert>
 </mapper>

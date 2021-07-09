@@ -23,13 +23,13 @@
         配置文件中可以保留别名和setting
         <property name="configLocation" value="classpath:mybatis-config.xml" /> -->
     </bean>
-
+<!--
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory" />
-    </bean>
+    </bean>-->
 
-    <bean id="userMapper" class="org.example.spring.mybatis.mapper.UserMapperImpl">
-        <property name="sqlSession" ref="sqlSession"/>
+    <bean id="userMapper" class="org.example.spring.mybatis.mapper.UserMapperDaoSurpportImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
 
