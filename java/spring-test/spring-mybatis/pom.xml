@@ -12,7 +12,9 @@
     <artifactId>spring-mybatis</artifactId>
 
     <properties>
-        <java.version>1.8</java.version>
+        <javai.version>11</javai.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>

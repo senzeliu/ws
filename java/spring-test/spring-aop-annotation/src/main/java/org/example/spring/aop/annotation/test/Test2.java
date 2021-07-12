@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
  * @since 2021/7/8 8:15 下午
  */
 @Component
-public class Test2  implements Tes{
+public class
+Test2  implements Tes{
 
     @Value("sss")
     private String ss;

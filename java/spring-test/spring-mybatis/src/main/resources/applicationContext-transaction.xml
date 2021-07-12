@@ -45,9 +45,7 @@
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="insert"></tx:method>
-            <tx:method name="update"></tx:method>
-            <tx:method name="delete"></tx:method>
+            <tx:method name="test"></tx:method>
         </tx:attributes>
     </tx:advice>
 

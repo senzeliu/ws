@@ -11,6 +11,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestApplication {
 
 
+    String ss;
+
     @Test
     public void test1() throws Exception {
         ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext-transaction.xml");
