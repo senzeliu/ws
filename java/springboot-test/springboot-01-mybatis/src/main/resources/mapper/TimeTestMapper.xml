@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.springboot.springboot01mybatis.mapper.TimeTestMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.springboot.springboot01mybatis.pojo.TimeTest">
+        <id property="id" column="id"/>
+        <result property="datetime1" column="datetime1" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="timestamp1" column="timestamp1" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="selectAll" resultType="org.example.springboot.springboot01mybatis.pojo.TimeTest">
+        select *
+        from time_test
+    </select>
+
+    <insert id="insert" parameterType="org.example.springboot.springboot01mybatis.pojo.TimeTest" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into time_test (datetime1,timestamp1)
+        values (#{datetime1},#{timestamp1})
+    </insert>
+</mapper>
