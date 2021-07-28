@@ -2,6 +2,7 @@ package org.example.springboot.springboot01mybatis.pojo;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -12,6 +13,6 @@ import java.util.Date;
 @Data
 public class TimeTest {
     private Integer id;
-    private Date datetime1;
+    private LocalDateTime datetime1;
     private Date timestamp1;
 }

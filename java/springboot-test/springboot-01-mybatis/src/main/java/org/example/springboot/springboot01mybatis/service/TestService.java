@@ -5,6 +5,7 @@ import org.example.springboot.springboot01mybatis.mapper.TimeTestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -30,16 +31,16 @@ public class TestService {
         TimeTest test = new TimeTest();
         Date now = new Date();
         System.out.println(now);
-        test.setDatetime1(now);
+        test.setDatetime1(LocalDateTime.now());
         test.setTimestamp1(now);
-        //imeTestMapper.insert(test);
+        timeTestMapper.insert(test);
 
-        SystemNotification systemNotification=new SystemNotification();
+       /* SystemNotification systemNotification=new SystemNotification();
         systemNotification.setName("test");
         systemNotification.setCreateTime(new Date());
         systemNotification.setUpdateTime(new Date());
         systemNotification.setStatus("");
         systemNotification.setIsRead(1);
-        systemNotificationMapper.addSystemNotification(systemNotification);
+        systemNotificationMapper.addSystemNotification(systemNotification);*/
     }
 }
